@@ -1,0 +1,34 @@
+header > h2 {
+	text-align: center;
+}
+
+.navegacion a img {
+	width: 60px;
+	margin-top: 2px;
+}
+
+.row .calculadora form{
+	padding: 20px;
+}
+
+.row .calculadora form .input-field {
+	margin-bottom: 30px;
+}
+
+.row .calculadora .imagen {
+	padding: 20px;
+}
+
+.row .calculadora .imagen img {
+	width: 100%;
+	height: 250px;
+	border-radius: 30px;
+}
+
+.row .tabla {
+	padding: 25px;
+}
+
+.row .tabla .observacion {
+	margin-top: 30px;
+}
