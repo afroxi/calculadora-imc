@@ -1,17 +1,15 @@
 <?php 
-	require_once('autoload.php');
+	require_once('Core/autoload.php');
 	class Registro extends Conexion
 	{
 		private $peso;
 		private $altura;
 		private $imc;
 		private $estado;
-		private $conex;
 
 		function __construct()
 		{
-			$this->conex = new Conexion();
-			$this->conex = $this->conex->getConex();
+			parent::__construct();
 		}
 
 		public function insertarDatos(float $peso, float $altura, float $imc, string $estado)
@@ -32,11 +30,14 @@
 
 		public function obtenerRegistros()
 		{
-			$query = "SELECT * FROM usuario ORDER BY imc_usuario DESC";
+			$query = "SELECT peso_usuario, altura_usuario, imc_usuario FROM usuario ORDER BY imc_usuario DESC";
 			$result = $this->conex->query($query);
 			$rows = $result->fetchall(PDO::FETCH_ASSOC);
-
-			return $rows;
+			if (count($rows) > 0) {
+				return $rows;
+			} else {
+				return "No se han encontrado datos";
+			}
 		}
 	}
 ?>

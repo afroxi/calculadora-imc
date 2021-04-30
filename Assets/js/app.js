@@ -2,9 +2,9 @@ const pesoInput = document.querySelector('#peso');
 const alturaInput = document.querySelector('#altura');
 const btnForm = document.querySelector('button[type="submit"]');
 
-eventListeners();
+iniciarApp();
 
-function eventListeners()
+function iniciarApp()
 {
 	document.addEventListener('DOMContentLoaded', () => {
 		btnForm.disabled = true;

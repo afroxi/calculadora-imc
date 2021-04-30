@@ -32,3 +32,8 @@ header > h2 {
 .row .tabla .observacion {
 	margin-top: 30px;
 }
+
+.no-datos {
+	text-align: center;
+	font-weight: 600;
+}

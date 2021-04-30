@@ -5,7 +5,7 @@
 		private $user = 'root';
 		private $password = '';
 		private $db = 'db_imc';
-		private $conex;
+		protected $conex;
 
 		function __construct()
 		{
@@ -17,11 +17,6 @@
 				$this->conex = "Ha ocurrido un error al conectar con la base de datos: {$e->getMessage()}";
 				echo $this->conex;
 			}
-		}
-
-		public function getConex()
-		{
-			return $this->conex;
 		}
 	}
 ?>

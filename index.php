@@ -1,5 +1,5 @@
 <?php 
-  require_once('autoload.php');
+  require_once('Core/autoload.php');
   $conex = new Registro();
   $rows = $conex->obtenerRegistros();
   if (isset($_POST['calcular'])) {
@@ -21,9 +21,9 @@
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="Assets/css/materialize.min.css"  media="screen,projection"/>
       <!-- Custom CSS -->
-      <link rel="stylesheet" href="css/style.css?v=<?php echo(rand()); ?>">
+      <link rel="stylesheet" href="Assets/css/style.css?v=<?php echo(rand()); ?>">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
@@ -32,7 +32,7 @@
       <!-- Navegación -->
       <nav class="navegacion">
         <div class="nav-wrapper">
-          <a href="index.php" class="brand-logo center"><img src="img/logo.png" alt=""></a>
+          <a href="index.php" class="brand-logo center"><img src="Assets/img/logo.png" alt=""></a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <!--<li><a href="sass.html">Sass</a></li>
             <li><a href="badges.html">Components</a></li>
@@ -51,7 +51,7 @@
             <div class="col s6 calculadora">
               <div class="row">
                 <div class="col s6 imagen">
-                  <img src="img/salud.jpg" alt="">
+                  <img src="Assets/img/salud.jpg" alt="">
                 </div>
                 <form method="POST" action="" class="col s6">
                   <div class="input-field">
@@ -90,16 +90,26 @@
                 </thead>
                 <tbody>
                   <?php 
-                    $cantRows = count($rows);
-                    for ($i = 0; $i < $cantRows; $i++) { ?>
+                    $i = 1;
+                    if (is_array($rows)) {
+                      foreach ($rows as $row) { ?>
+                        <tr>
+                          <td><b><?= $i; ?></b></td>
+                          <td><?= $row['peso_usuario']; ?></td>
+                          <td><?= $row['altura_usuario']; ?></td>
+                          <td><?= $row['imc_usuario']; ?></td>
+                        </tr>
+                    <?php  
+                        $i++;
+                      }
+                    ?>
+                  <?php 
+                    } else { ?>
                       <tr>
-                        <td><b><?= $i+1; ?></b></td>
-                        <td><?= $rows[$i]['peso_usuario']; ?></td>
-                        <td><?= $rows[$i]['altura_usuario']; ?></td>
-                        <td><?= $rows[$i]['imc_usuario']; ?></td>
+                        <td colspan="4" class="no-datos"><?= $rows ?></td>
                       </tr>
-                  <?php  }
-                  ?>
+                  <?php 
+                    } ?>  
                 </tbody>
               </table>
               <div class="observacion">
@@ -116,8 +126,8 @@
       </main>
       <!-- ./Contenido -->
       <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="Assets/js/materialize.min.js"></script>
       <!-- Custom JS -->
-      <script type="text/javascript" src="js/app.js"></script>
+      <script type="text/javascript" src="Assets/js/app.js?v=<?php echo(rand()); ?>"></script>
     </body>
   </html>
